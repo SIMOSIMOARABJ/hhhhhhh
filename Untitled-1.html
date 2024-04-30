@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حبيبتي وألعاب نارية</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #fireworksCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="fireworksCanvas"></canvas>
+    <img src="my_love.jpg" alt="حبيبتي">
+    
+    <script>
+        // كود JavaScript للألعاب النارية
+        const fireworksCanvas = document.getElementById('fireworksCanvas');
+        const ctx = fireworksCanvas.getContext('2d');
+
+        fireworksCanvas.width = window.innerWidth;
+        fireworksCanvas.height = window.innerHeight;
+
+        function drawFirework(x, y, color, radius) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
+
+            // تعريف الألعاب النارية هنا، على سبيل المثال:
+            // drawFirework(x, y, color, radius);
+
+            // مثال بسيط
+            const fireworksX = Math.random() * fireworksCanvas.width;
+            const fireworksY = Math.random() * fireworksCanvas.height;
+            const fireworksColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            const fireworksRadius = Math.random() * 3;
+            drawFirework(fireworksX, fireworksY, fireworksColor, fireworksRadius);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
